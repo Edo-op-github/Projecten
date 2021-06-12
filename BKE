@@ -1,0 +1,120 @@
+#laat het bord zien
+board = ["-", "-", "-",
+         "-", "-", "-",
+         "-", "-", "-"]
+taken_X =[]
+taken_O = []
+
+def display_board():
+    print (board[0] + " | " + board[1] + " | " + board[2] + " | ")
+    print (board[3] + " | " + board[4] + " | " + board[5] + " | ")
+    print (board[6] + " | " + board[7] + " | " + board[8] + " | ")
+ #voert zet in via input   
+def enter_move():
+    if declare_victory == False: 
+        global player_choice
+        global board
+        import random
+        choice = int(input("Enter your field: "))    
+        if choice in range(1,10):
+            choice = int(choice) - 1
+            if choice not in taken_X and choice not in taken_O:
+                board[choice] = "X"
+                taken_X.append(choice)
+                return taken_X,board
+                print("Thanks!")
+            else:
+                print ("You broke the game!")
+
+def program_move():
+    if declare_victory == False: 
+        global program_choice
+        import random
+        program_choice = random.randint(0,9)
+        if program_choice in taken_X or program_choice in taken_O:
+            program_choice = random.randint(0,9)
+        elif program_choice not in taken_X and program_choice not in taken_O:
+            taken_O.append(program_choice)
+            board[program_choice] = "O"
+            print ("Here's my move!")
+            return taken_O,board
+
+#checks for victory and tie
+def declare_victory():
+    #rows
+    if (0 in taken_O and 1 in taken_O and 2 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (0 in taken_X and 1 in taken_X and 2 in taken_X):
+        print ("X is the winner!")
+        return True
+    elif (3 in taken_O and 4 in taken_O and 5 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (3 in taken_X and 4 in taken_X and 5 in taken_X):
+        print ("X is the winner!")
+        return True
+    elif (6 in taken_O and 7 in taken_O and 8 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (6 in taken_X and 7 in taken_X and 8 in taken_X):
+        print ("X is the winner!")
+        return True
+    #columns
+    elif (0 in taken_O and 3 in taken_O and 6 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (0 in taken_X and 3 in taken_X and 6 in taken_X):
+        print ("X is the winner!")
+        return True
+    elif (1 in taken_O and 4 in taken_O and 7 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (1 in taken_X and 4 in taken_X and 7 in taken_X):
+        print ("X is the winner!")
+        return True
+    elif (2 in taken_O and 5 in taken_O and 8 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (2 in taken_X and 5 in taken_X and 8 in taken_X):
+        print ("X is the winner!")
+        return True
+    #diagonals
+    elif (0 in taken_O and 4 in taken_O and 8 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (0 in taken_X and 4 in taken_X and 8 in taken_X):
+        print ("X is the winner!")
+        return True
+    elif (2 in taken_O and 4 in taken_O and 6 in taken_O):
+        print ("O is the winner!")
+        return True
+    elif (2 in taken_X and 4 in taken_X and 6 in taken_X):
+        print ("X is the winner!")
+        return True
+    #tie
+    elif (0 in taken_X or 0 in taken_O) and (1 in taken_X or 1 in taken_O) and (2 in taken_X or 2 in taken_O) and (3 in taken_X or 3 in taken_O) and (4 in taken_X or 4 in taken_O) and (5 in taken_X or 5 in taken_O) and (6 in taken_X or 6 in taken_O) and (7 in taken_X or 7 in taken_O) and (8 in taken_X or 8 in taken_O):
+        print("It's a tie!")
+        return True
+    else:
+        return False
+    
+declare_victory() == False
+display_board()
+enter_move()
+display_board()
+program_move()
+display_board()
+enter_move()
+display_board()
+program_move()
+display_board()
+enter_move()
+declare_victory()
+display_board()
+program_move()
+declare_victory()
+display_board()
+enter_move()
+declare_victory()
+display_board()
