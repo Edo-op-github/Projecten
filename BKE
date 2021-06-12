@@ -1,15 +1,17 @@
-#laat het bord zien
 board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-"]
+# these lists are necessary to check if the game is won
 taken_X =[]
 taken_O = []
 
+#shows the board
 def display_board():
     print (board[0] + " | " + board[1] + " | " + board[2] + " | ")
     print (board[3] + " | " + board[4] + " | " + board[5] + " | ")
     print (board[6] + " | " + board[7] + " | " + board[8] + " | ")
- #voert zet in via input   
+ 
+#player move is entered by input 
 def enter_move():
     if declare_victory == False: 
         global player_choice
@@ -26,6 +28,7 @@ def enter_move():
             else:
                 print ("You broke the game!")
 
+#program's move is randomized, but needs to check if the integer -1 has been entered by player or by itself
 def program_move():
     if declare_victory == False: 
         global program_choice
@@ -41,7 +44,7 @@ def program_move():
 
 #checks for victory and tie
 def declare_victory():
-    #rows
+#rows
     if (0 in taken_O and 1 in taken_O and 2 in taken_O):
         print ("O is the winner!")
         return True
@@ -60,7 +63,7 @@ def declare_victory():
     elif (6 in taken_X and 7 in taken_X and 8 in taken_X):
         print ("X is the winner!")
         return True
-    #columns
+#columns
     elif (0 in taken_O and 3 in taken_O and 6 in taken_O):
         print ("O is the winner!")
         return True
@@ -79,7 +82,7 @@ def declare_victory():
     elif (2 in taken_X and 5 in taken_X and 8 in taken_X):
         print ("X is the winner!")
         return True
-    #diagonals
+#diagonals
     elif (0 in taken_O and 4 in taken_O and 8 in taken_O):
         print ("O is the winner!")
         return True
