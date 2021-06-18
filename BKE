@@ -2,7 +2,7 @@ board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-"]
 # these lists are necessary to check if the game is won
-taken_X =[]
+taken_X = []
 taken_O = []
 
 #shows the board
@@ -10,14 +10,15 @@ def display_board():
     print (board[0] + " | " + board[1] + " | " + board[2] + " | ")
     print (board[3] + " | " + board[4] + " | " + board[5] + " | ")
     print (board[6] + " | " + board[7] + " | " + board[8] + " | ")
- 
-#player move is entered by input 
+    print ("\n")
+
+#player move is entered by input
 def enter_move():
-    if declare_victory == False: 
+    if declare_victory() == False:
         global player_choice
         global board
         import random
-        choice = int(input("Enter your field: "))    
+        choice = int(input("Enter your field: "))
         if choice in range(1,10):
             choice = int(choice) - 1
             if choice not in taken_X and choice not in taken_O:
@@ -30,17 +31,21 @@ def enter_move():
 
 #program's move is randomized, but needs to check if the integer -1 has been entered by player or by itself
 def program_move():
-    if declare_victory == False: 
+    if declare_victory() == False:
         global program_choice
         import random
-        program_choice = random.randint(0,9)
-        if program_choice in taken_X or program_choice in taken_O:
-            program_choice = random.randint(0,9)
-        elif program_choice not in taken_X and program_choice not in taken_O:
-            taken_O.append(program_choice)
-            board[program_choice] = "O"
-            print ("Here's my move!")
-            return taken_O,board
+
+        valid = False
+        while valid == False:
+            program_choice = random.randint(0,8)
+            if program_choice not in taken_X and program_choice not in taken_O:
+                valid = True
+
+        print(program_choice)
+        taken_O.append(program_choice)
+        board[program_choice] = "O"
+        print ("Here's my move!")
+        return taken_O,board
 
 #checks for victory and tie
 def declare_victory():
@@ -101,7 +106,7 @@ def declare_victory():
         return True
     else:
         return False
-    
+
 declare_victory() == False
 display_board()
 enter_move()
