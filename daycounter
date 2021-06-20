@@ -17,8 +17,6 @@ def days_in_month(year, month):
         return 31
     else:
         return 30
-        
-        
 
 def day_of_year(year, month, day):
     currentDay = 0
