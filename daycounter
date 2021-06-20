@@ -24,7 +24,6 @@ def day_of_year(year, month, day):
     currentDay = 0
     for month in range(0,month-1):
         currentDay += days_in_month(year,month)
-        print(currentDay)
     currentDay = currentDay + day
     return currentDay
 
