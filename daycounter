@@ -22,7 +22,7 @@ def days_in_month(year, month):
 
 def day_of_year(year, month, day):
     for currentDay in range(month):
-        currentDay += days_in_month(year,month)
+        days += days_in_month(year,month)
         currentDay = days + day
         return currentDay
 
