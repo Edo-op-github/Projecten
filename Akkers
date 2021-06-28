@@ -1,0 +1,35 @@
+<?php
+$totaal = 0;
+$gewassen = array(
+  array (
+    "naam" => "graan",
+    "hectare" => 5,
+    "opbrengst" => 7,
+    "prijs" => 95
+  ),
+  array (
+    "naam" => "bieten",
+    "hectare" => 2,
+    "opbrengst" => 75,
+    "prijs" => 20
+  ),
+  array (
+    "naam" => "uien",
+    "hectare" => 3,
+    "opbrengst" => 45,
+    "prijs" => 5
+  ),
+  array (
+    "naam" => "aardappel",
+    "hectare" => 8,
+    "opbrengst" => 45,
+    "prijs" => 7
+  )
+);
+foreach ($gewassen as $gewas){
+  echo "<b>".$gewas["naam"]."</b>: opbrengst: <i>".($gewas["hectare"]*$gewas["opbrengst"]*$gewas["prijs"])." euro </i>. Omzet ".$gewas["naam"]." per hectare: ".($gewas["opbrengst"]*$gewas["prijs"])."<br>";
+  $sum = ($gewas["hectare"]*$gewas["opbrengst"]*$gewas["prijs"]);
+  $totaal += $sum;
+  }
+echo "<br>Totale opbrengst: ".$totaal." euro.";
+ ?>
